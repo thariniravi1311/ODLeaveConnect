@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+    <title>View Status</title>
+</head>
+<body>
+    <div class="navbar">
+
+    <div class="logo">
+        ODLEAVE <span>Connect</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">HOME</a>
+
+        <a href="/student">STUDENT LOGIN</a>
+
+        <a href="/faculty">FACULTY LOGIN</a>
+
+        <a href="/about">ABOUT</a>
+
+    </div>
+
+</div>
+    <div class="main">
+    <div class="glass-box">
+<h1>Request Status</h1>
+    {% for row in data %}
+
+<div class="request-card">
+
+    <p><b>Register Number:</b> {{ row[2] }}</p>
+
+    <p><b>Date:</b> {{ row[4] }}</p>
+
+    {% if row[6] == "Accepted" %}
+
+        <p class="accepted">
+            Status: Accepted
+        </p>
+
+        <a href="/download_pdf/{{ row[0] }}">
+            <button class="download-btn">
+                Download PDF
+            </button>
+        </a>
+
+    {% elif row[6] == "Rejected" %}
+
+        <p class="rejected">
+            Status: Rejected
+        </p>
+
+    {% else %}
+
+        <p class="pending">
+            Status: Pending
+        </p>
+
+    {% endif %}
+
+</div>
+
+<br>
+
+{% endfor %}
+
+    </div>
+    </div>
+</body>
+</html>

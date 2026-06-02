@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OD Request</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        ODLEAVE <span>Connect</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">HOME</a>
+        <a href="/student">STUDENT LOGIN</a>
+        <a href="/about">ABOUT</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="glass-box">
+
+        <h1>Apply OD</h1>
+
+        <form action="/submit_request" method="POST">
+
+            <input type="text"
+            name="name"
+            placeholder="Enter Student Name"
+            required>
+
+            <br><br>
+
+            <input type="text"
+            name="regno"
+            placeholder="Enter Register Number"
+            required>
+
+            <br><br>
+
+            <input type="text"
+            name="department"
+            placeholder="Enter Department"
+            required>
+
+            <br><br>
+
+            <input type="date"
+            name="date"
+            required>
+          <br><br>
+          <label><b>Reason</b></label>
+
+            <br><br>
+    
+            <p class="sample-text">
+            Respected Sir/Madam,
+            </p>
+
+            <textarea
+            name="reason"
+            rows="8"
+            cols="40"
+            required></textarea>
+            <br><br>
+
+<button type="submit">
+    SUBMIT
+</button>
+        {% if success %}
+        <br>
+<p class="success-msg">
+    ✅ OD Applied Successfully
+</p>
+{% endif %}
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

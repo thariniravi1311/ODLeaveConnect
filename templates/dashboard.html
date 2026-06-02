@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        ODLEAVE <span>Connect</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">HOME</a>
+
+        <a href="/student">STUDENT LOGIN</a>
+
+        <a href="/about">ABOUT</a>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div class="glass-box">
+
+        <h1>Student Dashboard</h1>
+
+        <br>
+
+        <p>
+            Welcome Student
+        </p>
+
+        <br><br>
+
+        <a href="/request">
+
+            <button>
+                APPLY OD
+            </button>
+
+        </a>
+        <a href="/leave">
+
+            <button>
+                APPLY LEAVE
+            </button>
+
+        </a>
+        
+        <br><br>
+    <a href="/view_status">
+        <button>
+            VIEW STATUS
+        </button>
+    </a>
+    <a href="/logout">
+        <button class="logout-btn">LOGOUT</button>
+    </a>
+    </div>
+
+</div>
+
+</body>
+</html>

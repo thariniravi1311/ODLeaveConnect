@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Faculty Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+    <div class="navbar">
+
+    <div class="logo">
+        ODLEAVE <span>Connect</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">HOME</a>
+
+        <a href="/faculty">FACULTY LOGIN</a>
+
+        <a href="/about">ABOUT</a>
+
+    </div>
+
+</div>
+<div class="stats-container">
+
+    <div class="stat-card">
+        <h3>Total</h3>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Accepted</h3>
+        <p>{{ accepted }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Rejected</h3>
+        <p>{{ rejected }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending</h3>
+        <p>{{ pending }}</p>
+    </div>
+
+</div>
+<form method="GET" action="/fdashboard">
+
+    <input type="text"
+           name="search"
+           placeholder="Enter Register Number">
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<br>
+{% for row in data %}
+
+<div class="request-card">
+
+    {% if row[7] == "OD" %}
+
+        <h2>OD Request</h2>
+
+    {% else %}
+
+        <h2>Leave Request</h2>
+
+    {% endif %}
+
+    <div class="student-info">
+
+        <p><b>Student Name:</b> {{ row[1] }}</p>
+
+        <p><b>Register Number:</b> {{ row[2] }}</p>
+
+        <p><b>Department:</b> {{ row[3] }}</p>
+
+        <p><b>Date:</b> {{ row[4] }}</p>
+
+    </div>
+
+    <div class="letter-box">
+
+        <h3>Reason</h3>
+
+        <p>{{ row[5] }}</p>
+
+    </div>
+
+    <p class="status">
+
+        <b>Status:</b> {{ row[6] }}
+
+    </p>
+
+    {% if row[6] == "Pending" %}
+
+        <a href="/accept/{{ row[0] }}">
+            <button class="accept-btn">
+                Accept
+            </button>
+        </a>
+
+        <a href="/reject/{{ row[0] }}">
+            <button class="reject-btn">
+                Reject
+            </button>
+        </a>
+
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+</body>
+
+</html>
